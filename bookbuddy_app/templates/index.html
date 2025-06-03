@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>📚 BookBuddy – Recomendador de Libros</title>
+</head>
+<body>
+    <h1>📖 Recomendador de Libros</h1>
+
+    <form method="post">
+        <label for="book_id">Ingresá el Book ID:</label>
+        <input type="number" name="book_id" required>
+        <input type="submit" value="Recomendar">
+    </form>
+
+    {% if book_id %}
+        <h2>Resultados para Book ID {{ book_id }}</h2>
+    {% endif %}
+
+    {% for libro in recomendaciones %}
+        {% if libro.error %}
+            <p style="color:red;">{{ libro.error }}</p>
+        {% else %}
+            <div style="margin: 15px 0;">
+                <img src="{{ libro.imagen }}" width="100"><br>
+                <strong>{{ libro.titulo }}</strong><br>
+                Autor: {{ libro.autor }}<br>
+                ⭐ Rating: {{ libro.rating }}<br>
+                🏷️ Tags: {{ libro.tags }}
+            </div>
+        {% endif %}
+    {% endfor %}
+</body>
+</html>
