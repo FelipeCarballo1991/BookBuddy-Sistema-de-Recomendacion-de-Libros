@@ -51,3 +51,7 @@ htmlcov/
 
 # Git
 *.orig
+
+
+#pkl
+*.pkl
